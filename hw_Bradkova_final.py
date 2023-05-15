@@ -112,12 +112,18 @@ class I_M:
         voc = {"Block header" : self.block_header, "Manufacture ID" : self.manuf_ID, "Order number" : self.on, "Serial number" : self.sn, "Hardware revision" : self.hw_revision, "Software revision" : self.sw_revision, "Revision status" : self.revision_status, "Profile ID" : self.profile_ID, "Profile-specific type" : self.profile_type, "I&M version" : self.im_version, "I&M support" : self.im_support}
         field_name = input("Field name:")
         if field_name in voc:
-            print (field_name, "=", voc[field_name])
+            return f"{field_name} = {voc[field_name]}"
         else:
-            print("Entered field name does not exist")
+            return f"Entered field name does not exist"
 
         
   
 response = I_M()
 response.data = (b'\x00 \x008\x01\x00\x00*6ES7 146-6HE00-0BB0 S C-PNRJ60012022\x00\x01B3\x01\x0c\x00\x00\x00\x00\x00\x05\x01\x01\x00\x0f')
+print(response)
+response.update(b'\x00 \x008\x01\x00\x00*9ES7 146-6HE00-0BB0 S C-PNRJ60012022\x00\x01B3\x01\x0c\x00\x00\x00\x00\x00\x05\x01\x01\x00\x0f')
+print(response)
+print(response.print())
+print(response.call())
+
 
